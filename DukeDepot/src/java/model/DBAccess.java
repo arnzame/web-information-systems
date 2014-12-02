@@ -60,10 +60,22 @@ public abstract class DBAccess {
         }
     }
     private String encrypt(String s){
+        try {
+            Context envCxt = (Context) (new InitialContext()).lookup("java:comp/env");
+            String key = (String) envCxt.lookup("Key");
+        } catch (NamingException e) {
+            System.out.println("Key Failed.");
+        }
         return null;
     }
     
     private String decrypt(String s){
+        try {
+            Context envCxt = (Context) (new InitialContext()).lookup("java:comp/env");
+            String key = (String) envCxt.lookup("Key");
+        } catch (NamingException e) {
+            System.out.println("Key Failed.");
+        }
         return null;
     }
 }
