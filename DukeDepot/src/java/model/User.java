@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.sql.ResultSet;
 import java.util.*;
 
 /**
@@ -16,12 +17,16 @@ public class User extends DBAccess {
     Boolean isAdmin = false;
     Boolean isLoggedIn = false;
     String userName;
+    String password;
     String firstName;
     String lastName;
     int id;
     public User(){
         
     }
+    //Needed methods: Add user, validate password, validate secret question Q & A,
+    //validate password, 
+    //
     
     public void newUser(ArrayList<String> i) {
         ArrayList<String> info = i;
@@ -42,7 +47,7 @@ public class User extends DBAccess {
             }
             value += s;
         }
-        ArrayList<String> s = doQuery("INSERT INTO dukeDepot.Users (firstName, lastName, dob, shipAddress, gender, isAdmin, userName, "
+        ResultSet rs = doQuery("INSERT INTO dukeDepot.Users (firstName, lastName, dob, shipAddress, gender, isAdmin, userName, "
                 + "password, secretQuestion, secretAnswer) VALUES ( " + value + ");");
     }
     

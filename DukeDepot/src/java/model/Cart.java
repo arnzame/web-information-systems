@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,8 @@ public class Cart extends DBAccess{
     
     public Cart (int ui){
         userID = ui;
-        productList = doQuery("SELECT productID FROM Cart WHERE userID = " + userID + ";");
+        ResultSet rs = doQuery("SELECT productID FROM Cart WHERE userID = " + userID + ";");
         
     }
+    
 }

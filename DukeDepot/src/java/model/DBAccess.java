@@ -48,24 +48,23 @@ public abstract class DBAccess {
         }
         return true;
     }
-    public ArrayList<String> doQuery(String query) {
+    public ResultSet doQuery(String query) {
         ArrayList<String> results = new ArrayList<String>();
+        ResultSet rs;
         try {
           Connection connection = getConnection();
           if (connection == null) {
             return null;
           }
           Statement st = connection.createStatement();
-          ResultSet rs = st.executeQuery(query);
-          while (rs.next()) {
-            results.add(rs.getString(1) + " " + rs.getString(2));
-          }
+          rs = st.executeQuery(query);
+          
           connection.close();
         } catch (SQLException s) {
           s.printStackTrace();
           return null;
     }
-    return results;
+    return rs;
     }
     private void initDB(Connection connection){
         Statement statement;
@@ -99,22 +98,26 @@ public abstract class DBAccess {
         }
     }
     public String encrypt(String s){
+        String key = null;
         try {
             Context envCxt = (Context) (new InitialContext()).lookup("java:comp/env");
-            String key = (String) envCxt.lookup("Key");
+            key = (String) envCxt.lookup("Key");
         } catch (NamingException e) {
             System.out.println("Key Failed.");
         }
+        //Perform AES Encryption: return somenthing.encrypt(s, key);
         return null;
     }
     
     public String decrypt(String s){
+        String key = null;
         try {
             Context envCxt = (Context) (new InitialContext()).lookup("java:comp/env");
-            String key = (String) envCxt.lookup("Key");
+            key = (String) envCxt.lookup("Key");
         } catch (NamingException e) {
             System.out.println("Key Failed.");
         }
+        //Perform AES decryption
         return null;
     }
 }

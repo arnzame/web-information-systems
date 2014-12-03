@@ -10,5 +10,8 @@ package controller;
  * @author aaron
  */
 public class UserController {
-    
+    //Needed methods: login, logout
+    //Logout needs to delete all records from cart and set isloggedin to false
+    //Login needs to validate user input, check password against username in DB, 
+    //then set isloggedin to true.
 }
