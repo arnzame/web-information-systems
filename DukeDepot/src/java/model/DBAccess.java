@@ -5,6 +5,7 @@
  */
 package model;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.naming.*;
 /**
  *
@@ -32,6 +33,40 @@ public abstract class DBAccess {
         }
         return connection;
     }
+    public boolean executeCommand(String command) {
+        try {
+          Connection connection = getConnection();
+          if (connection == null) {
+            return false;
+          }
+          Statement stmt = connection.createStatement();
+          stmt.executeUpdate(command);
+          connection.close();
+        } catch (SQLException sqe) {
+          sqe.printStackTrace();
+          return false;
+        }
+        return true;
+    }
+    public ArrayList<String> doQuery(String query) {
+        ArrayList<String> results = new ArrayList<String>();
+        try {
+          Connection connection = getConnection();
+          if (connection == null) {
+            return null;
+          }
+          Statement st = connection.createStatement();
+          ResultSet rs = st.executeQuery(query);
+          while (rs.next()) {
+            results.add(rs.getString(1) + " " + rs.getString(2));
+          }
+          connection.close();
+        } catch (SQLException s) {
+          s.printStackTrace();
+          return null;
+    }
+    return results;
+    }
     private void initDB(Connection connection){
         Statement statement;
         ResultSet rs;
@@ -51,7 +86,11 @@ public abstract class DBAccess {
                     + "cardType VARCHAR(15) NOT NULL, cvv BLOB NOT NULL, cardNumber BLOB NOT NULL, expDate BLOB NOT NULL, cardholder BLOB NOT NULL, "
                     + "billingAddress BLOB NOT NULL); "
                     + "CREATE TABLE IF NOT EXISTS dukeDepot.Cart (userID INT NOT NULL REFERENCES Users(userID), productID INT NOT NULL REFERENCES"
-                    + " Product(productID), size VARCHAR (3), quantity INT NOT NULL);";
+                    + " Product(productID), size VARCHAR (3), quantity INT NOT NULL);"
+                    + "CREATE TABLE IF NOT EXISTS dukeDepot.Orders (orderID INT NOT NULL, userID INT NOT NULL REFERENCES Users(userID), productID INT NOT NULL REFERENCES"
+                    + " Product(productID), size VARCHAR (3), quantity INT NOT NULL, paymentID INT NOT NULL REFERENCES Payment(paymentID), orderDate DATE);"
+                    + "CREATE TABLE IF NOT EXISTS dukeDepot.ClosedOrders (orderID INT NOT NULL, userID INT NOT NULL REFERENCES Users(userID), productID INT NOT NULL REFERENCES"
+                    + " Product(productID), size VARCHAR (3), quantity INT NOT NULL, paymentID INT NOT NULL REFERENCES Payment(paymentID), orderDate DATE);";
             int executeUpdate = statement.executeUpdate(userinit);
         } catch (SQLException sqe) {
             System.err.println(sqe.getMessage());
@@ -59,7 +98,7 @@ public abstract class DBAccess {
             System.out.println(sqe.getMessage());
         }
     }
-    private String encrypt(String s){
+    public String encrypt(String s){
         try {
             Context envCxt = (Context) (new InitialContext()).lookup("java:comp/env");
             String key = (String) envCxt.lookup("Key");
@@ -69,7 +108,7 @@ public abstract class DBAccess {
         return null;
     }
     
-    private String decrypt(String s){
+    public String decrypt(String s){
         try {
             Context envCxt = (Context) (new InitialContext()).lookup("java:comp/env");
             String key = (String) envCxt.lookup("Key");

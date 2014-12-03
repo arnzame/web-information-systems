@@ -5,10 +5,13 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author aaron
  */
 public class Cart extends DBAccess{
-    
+    int userID;
+    ArrayList<Product> basket;
 }
