@@ -13,5 +13,11 @@ import java.util.ArrayList;
  */
 public class Cart extends DBAccess{
     int userID;
-    ArrayList<Product> basket;
+    ArrayList<String> productList;
+    
+    public Cart (int ui){
+        userID = ui;
+        productList = doQuery("SELECT productID FROM Cart WHERE userID = " + userID + ";");
+        
+    }
 }

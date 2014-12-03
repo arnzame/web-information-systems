@@ -10,7 +10,10 @@ package model;
  * @author aaron
  */
 public class Product {
+    String productID;
+    String size; 
     public Product(){
+        String p;
         
     }
 }
