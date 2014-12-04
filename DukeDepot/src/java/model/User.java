@@ -21,8 +21,11 @@ public class User extends DBAccess {
     String firstName;
     String lastName;
     int id;
-    public User(){
-        
+    public User(String fn, String ln, String un, String pw){
+        userName = un;
+        password = pw;
+        firstName = fn;
+        lastName = ln;
     }
     //Needed methods: Add user, validate password, validate secret question Q & A,
     //validate password, 

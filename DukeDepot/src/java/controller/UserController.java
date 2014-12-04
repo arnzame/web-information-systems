@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package controller;
+import model.*;
 
 /**
  *
@@ -14,4 +15,16 @@ public class UserController {
     //Logout needs to delete all records from cart and set isloggedin to false
     //Login needs to validate user input, check password against username in DB, 
     //then set isloggedin to true.
+    public boolean login(String un, String pw){
+        //SQL injection check
+        if (un.contains("=/;\"\'\\&|()=+`<>") || pw.contains("=/;\"\'\\&|()=+`<>"))
+            return false;
+        
+        return false;
+    }
+    
+    public boolean addUser(){
+        
+        return false;
+    }
 }
