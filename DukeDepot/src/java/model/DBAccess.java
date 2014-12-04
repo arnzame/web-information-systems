@@ -33,6 +33,7 @@ public abstract class DBAccess {
         }
         return connection;
     }
+    
     public boolean executeCommand(String command) {
         try {
           Connection connection = getConnection();
@@ -48,6 +49,7 @@ public abstract class DBAccess {
         }
         return true;
     }
+    
     public ResultSet doQuery(String query) {
         ArrayList<String> results = new ArrayList<String>();
         ResultSet rs;
