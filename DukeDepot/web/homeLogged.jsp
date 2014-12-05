@@ -20,7 +20,8 @@
             
             <nav><ul>
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="login.jsp">Login</a></li>
+                <li><a href="index.jsp">Logout</a></li>
+                <li><a href="profile.jsp">Edit Profile</a></li>
             </ul></nav>
         </header>
         <h1>Browse Our Products</h1>

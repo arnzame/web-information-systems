@@ -11,7 +11,10 @@ import javax.naming.*;
  *
  * @author aaron
  */
-public abstract class DBAccess {
+public class DBAccess {
+    public DBAccess(){
+        
+    }
     protected Connection getConnection(){
         String dbPath = null;
         Connection connection = null;
@@ -62,6 +65,7 @@ public abstract class DBAccess {
           rs = st.executeQuery(query);
           
           connection.close();
+          
         } catch (SQLException s) {
           s.printStackTrace();
           return null;
@@ -78,8 +82,8 @@ public abstract class DBAccess {
             
             String userinit = "CREATE TABLE IF NOT EXISTS dukeDepot.Users (userID INT PRIMARY KEY NOT NULL AUTOINCREMENT, "
                     + "firstName VARCHAR(40) NOT NULL, lastName VARCHAR(40) NOT NULL, dob VARCHAR(10), shipAddress VARCHAR(100), "
-                    + "gender CHAR(1), age INT, isAdmin BOOLEAN NOT NULL CHECK (isAdmin IN (0, 1)), userName VARCHAR(30) NOT NULL UNIQUE, "
-                    + "password BLOB NOT NULL, secretQuestion BLOB NOT NULL, secretAnswer BLOB NOT NULL);"
+                    + "gender CHAR(1), age INT, isAdmin BOOLEAN NOT NULL CHECK (isAdmin IN (0, 1)), isSuperAdmin BOOLEAN NOT NULL CHECK (isSuperAdmin IN (0, 1))"
+                    + " userName VARCHAR(30) NOT NULL UNIQUE, password BLOB NOT NULL, secretQuestion BLOB NOT NULL, secretAnswer BLOB NOT NULL);"
                     + "CREATE TABLE IF NOT EXISTS dukeDepot.Product (productID INT PRIMARY KEY NOT NULL AUTOINCREMENT, "
                     + "productName VARCHAR(25) NOT NULL, price REAL, size VARCHAR(3), description VARCHAR(300), imageurl VARCHAR(150), "
                     + "category VARCHAR(20));"
@@ -121,5 +125,8 @@ public abstract class DBAccess {
         }
         //Perform AES decryption
         return null;
+    }
+    public boolean validate(String s){
+        return (!s.contains("=/;\"\'\\&|()=+`<>"));
     }
 }

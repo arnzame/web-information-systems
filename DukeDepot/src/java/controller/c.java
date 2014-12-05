@@ -9,9 +9,9 @@ package controller;
  *
  * @author aaron
  */
-public class CartController {
-    //Additem: adds item to cart table
-    //Deleteitem: deletes item from cart table
-    //Checkout: moves items to ORDERS table then deletes them from cart
-    //
+public class c {
+    //Records payment information for a user
+    //Process payment: A stub that returns TRUE is fine
+    //Copy items in shopping cart to ORDERS table
+    //Delete moved items from CART table
 }

@@ -1,0 +1,95 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 2, 2014, 10:06:38 PM
+    Author     : charleshumphries
+*/
+
+.mainHeader img {
+	width: 30%;
+	height: auto;
+	margin: 2% 0;
+}
+
+.mainHeader h1 {
+	display: inline;
+}
+
+.mainHeader nav {
+	width: 99%;
+	background-color: rgb(203,182,119);
+	height: 40px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.mainHeader nav ul {
+	list-style: none;
+	margin: 0 auto;
+}
+
+.mainHeader nav ul li {
+	float: left;
+	display: inline;
+}
+
+.mainHeader nav a:link, .mainheader nav a:visited {
+	color: black;
+	display: inline-block;
+	padding: 10px 25px;
+	height: 20px;
+}
+
+.mainHeader nav a:hover, .mainHeader nav a:active,
+.mainHeader nav .active a:link, .mainHeader nav .active a:visited {
+	background-color: white;
+	text-shadow: none;
+}
+
+.mainHeader nav ul li a {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+a {
+	text-decoration: none;
+        color: black;
+}
+
+
+body {
+    background-color: rgb(69,0,132);
+    margin: 0 auto;
+    width: 70%;
+    clear: both;
+}
+
+h1 {
+    color: rgb(203,182,119);
+    text-align: center;
+}
+
+table {
+    padding-top: 15%;
+    padding-bottom: 5%;
+   
+}
+
+table.pay {
+    padding-top: 5%;
+}
+
+table.ship {
+    padding-top: 5%;
+}
+button:hover {
+    background-color: rgb(203,182,119);
+}
+
+
+
