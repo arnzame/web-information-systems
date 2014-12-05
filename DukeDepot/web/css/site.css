@@ -48,6 +48,7 @@ and open the template in the editor.
 
 a {
 	text-decoration: none;
+        color: black;
 }
 
 
@@ -74,4 +75,7 @@ p {
 
 button:hover {
     background-color: rgb(203,182,119);
+}
+div.reset {
+    padding-top: 3%;
 }

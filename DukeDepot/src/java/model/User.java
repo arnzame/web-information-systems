@@ -41,14 +41,17 @@ public class User extends DBAccess {
     public Boolean isLoggedIn(){
         return isLoggedIn;
     }
-    public void setAdmin(){
-        isAdmin = true;
+    public void setAdmin(Boolean b){
+        isAdmin = b;
     }
-    public void setSuperAdmin(){
-        isSuperAdmin = true;
+    public void setSuperAdmin(Boolean b){
+        isSuperAdmin = b;
     }
-    public void setLoggedIn(){
-        isLoggedIn = true;
+    public void setLoggedIn(Boolean b){
+        isLoggedIn = b;
+    }
+    public String getUserName(){
+        return userName;
     }
     
 

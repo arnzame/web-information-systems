@@ -7,25 +7,18 @@ package controller.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.DBAccess;
-import model.User;
 
 /**
  *
  * @author aaron
  */
-@WebServlet(name = "login", urlPatterns = {"/controller/user/login"})
-public class login extends HttpServlet {
+@WebServlet(name = "AddToCart", urlPatterns = {"/AddToCart"})
+public class AddToCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,36 +31,19 @@ public class login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DBAccess db = new DBAccess();
-        HttpSession session = request.getSession();
-        if (!db.validate(request.getParameter("userName")) || !db.validate(request.getParameter("password"))){
-            session.setAttribute("loggedIn", false);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AddToCart</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AddToCart at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        
-        try {
-            
-            Connection conn = db.getConnection();
-            Statement statement = conn.createStatement();
-            ResultSet s = statement.executeQuery("SELECT * FROM Users WHERE userName = '" + request.getParameter("userName") + "' AND password = '" 
-                    + db.encrypt(request.getParameter("password")) + "';");
-            if (s.next()){
-                User u = new User(s.getString("userName"), s.getString("password"), s.getString("firstName"), s.getString("lastName"));
-                u.setLoggedIn(true);
-                session.setAttribute("loggedIn", true);
-                if (s.getInt("isAdmin") ==  1){
-                    u.setAdmin(true);
-                }
-                if (s.getInt("isSuperAdmin") ==  1){
-                    u.setSuperAdmin(true);
-                }
-                session.setAttribute("user", u);
-                
-            }
-            
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

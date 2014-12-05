@@ -9,20 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="home.css" type="text/css" />
+        <link rel="stylesheet" href="./css/home.css" type="text/css" />
         <link rel="icon" type="image/png" href="http://s3.amazonaws.com/zim-prod-static/images/jmu_favicon.gif">
         <title>The Duke Depot</title>
     </head>
     <body>
-        <header class="mainHeader">
-            <img src="http://cdn.fansided.com/wp-content/blogs.dir/249/files/2013/09/jmu.jpg" style="vertical-align: middle"/>
-            <h1>The Duke Depot</h1>
-            
-            <nav><ul>
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="login.jsp">Login</a></li>
-            </ul></nav>
-        </header>
+        <%@include file="/WEB-INF/jspf/header.jspf" %>
         <h1>Browse Our Products</h1>
         
         <table width="100%" border="0" cellpadding="5">
@@ -38,5 +30,3 @@
                 <button type="button"><a href="kidClothing.jsp">Kid's Clothing</a></button></td>
             </tr>
         </table>
-    </body>
-</html>

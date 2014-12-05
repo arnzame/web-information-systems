@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package model;
+
 import java.sql.*;
-import java.util.ArrayList;
+
 import javax.naming.*;
 /**
  *
@@ -15,7 +16,7 @@ public class DBAccess {
     public DBAccess(){
         
     }
-    protected Connection getConnection(){
+    public Connection getConnection(){
         String dbPath = null;
         Connection connection = null;
         try {
@@ -53,25 +54,7 @@ public class DBAccess {
         return true;
     }
     
-    public ResultSet doQuery(String query) {
-        ArrayList<String> results = new ArrayList<String>();
-        ResultSet rs;
-        try {
-          Connection connection = getConnection();
-          if (connection == null) {
-            return null;
-          }
-          Statement st = connection.createStatement();
-          rs = st.executeQuery(query);
-          
-          connection.close();
-          
-        } catch (SQLException s) {
-          s.printStackTrace();
-          return null;
-    }
-    return rs;
-    }
+  
     private void initDB(Connection connection){
         Statement statement;
         ResultSet rs;
@@ -111,8 +94,8 @@ public class DBAccess {
         } catch (NamingException e) {
             System.out.println("Key Failed.");
         }
-        //Perform AES Encryption: return somenthing.encrypt(s, key);
-        return null;
+        
+        return s;
     }
     
     public String decrypt(String s){
@@ -123,8 +106,8 @@ public class DBAccess {
         } catch (NamingException e) {
             System.out.println("Key Failed.");
         }
-        //Perform AES decryption
-        return null;
+        
+        return s;
     }
     public boolean validate(String s){
         return (!s.contains("=/;\"\'\\&|()=+`<>"));

@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="home.css" type="text/css" />
+        <link rel="stylesheet" href="./css/site.css" type="text/css" />
         <link rel="icon" type="image/png" href="http://s3.amazonaws.com/zim-prod-static/images/jmu_favicon.gif">
         <title>Create New Account</title>
     </head>

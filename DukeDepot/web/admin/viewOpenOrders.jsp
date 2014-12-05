@@ -13,5 +13,17 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <table>
+            <th>
+                <td>Order #</td>
+                <td>User</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td></td>
+            </th>
+        <%
+        String sql = "SELECT DISTINCT userID FROM Orders;";     
+        %>
+        </table>
     </body>
 </html>

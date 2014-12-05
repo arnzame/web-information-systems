@@ -1,0 +1,39 @@
+<%-- any content can be specified here e.g.: --%>
+<%@page import="javax.websocket.Session"%>
+<%@ page pageEncoding="UTF-8" %>
+<%@ page import="model.User" %>
+
+<header class="mainHeader">
+    <img src="http://cdn.fansided.com/wp-content/blogs.dir/249/files/2013/09/jmu.jpg" style="vertical-align: middle"/>
+    <h1>The Duke Depot</h1>
+    
+    <nav>
+        <ul>
+            <li class="active"><a href="/">Home</a></li>
+            <% 
+            User u = (User) session.getAttribute("User");
+            if (u != null) {
+                if (u.isLoggedIn()){
+                    out.println("<li><a href=\"/user/profile.jsp\">Edit Profile</a></li>");
+                    out.println("<li><a href=\"/user/viewCart.jsp\">View Cart</a></li>");
+                    out.println("<li><a href=\"controller/Checkout\">Checkout</a></li>");
+                    out.println("<li><a href=\"controller/signout\">Sign Out</a></li>");
+                    out.println("<p style=\"float=right;\">Welcome, " + u.getUserName() + "!</p>");
+                } else if (u.isAdmin() && u.isLoggedIn()) {
+                    out.println("<li><a href=\"/user/profile.jsp\">Edit Profile</a></li>");
+                    out.println("<li><a href=\"controller/signout\">Sign Out</a></li>");
+                    out.println("<li><a href=\"/admin/viewProducts.jsp\">Add/Edit Prodcut</a></li>");
+                    out.println("<li><a href=\"/admin/viewOpenOrders.jsp\">View Open Orders</a></li>");
+                    out.println("<li><a href=\"/admin/viewClosedOrders.jsp\">View Closed Orders</a></li>");
+                    out.println("<li style=\"float=right;\"><p>Welcome, " + u.getUserName() + "!</p></li>");
+                } else {
+                    out.println("<li><a href=\"./login.jsp\">Sign In</a></li>");
+                }
+            } else {
+                out.println("<li><a href=\"./login.jsp\">Sign In</a></li>");
+                out.println("<li><p>Welcome!</p></li>");
+            }%>
+        </ul>
+
+    </nav>
+</header>
