@@ -5,23 +5,21 @@
  */
 package model;
 
-import java.sql.*;
-import java.util.*;
-
 /**
  *
  * @author Chris
  */
 public class Products extends DBAccess {
 
-    private int productId;
-    private int price;
-    private String productName;
-    private String size;
-    private String description;
-    private String category;
-    private String image;
+    int productId;
+    int price;
+    String productName;
+    String size;
+    String description;
+    String category;
+    String image;
 
+    //Constructor
     public Products(int id, int price, String productName, String size, 
             String description, String category, String image) {
         productId = id;
