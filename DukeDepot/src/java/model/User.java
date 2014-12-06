@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.sql.*;
+import java.util.*;
+
 /**
  *
  * @author aaron
@@ -19,8 +22,6 @@ public class User extends DBAccess {
     String firstName;
     String lastName;
     int id;
-    
-    //Constructor
     public User(String un, String pw, String fn, String ln){
         userName = un;
         password = pw;
