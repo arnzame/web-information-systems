@@ -19,14 +19,14 @@
         
         <table width="100%" border="0" cellpadding="5">
             <tr>
-                <td align="center" valign="center"><img src="http://images.footballfanatics.com/FFImage/thumb.aspx?i=/productImages/_743000/ff_743554_xl.jpg&w=180" 
+                <td align="center" valign="center"><img src="./img/long_sleeve_t-shirt.jpg" 
                 alt="Men Clothes" /> <br />
-                <button type="button"><a href="menClothing.jsp">Men's Clothing</a></button></td>
-                <td align="center" valign="center"><img src="http://bkstr.scene7.com/is/image/Bkstr/712-C5344-P2427272-C-Purple?$GMCategory$"
+                <button type="button"><a href="category.jsp?category=men">Men's Clothing</a></button></td>
+                <td align="center" valign="center"><img src="./img/low_cut_t-shirt.jpg"
                 alt="Women Clothes" /> <br />
-                <button type="button"><a href="womenClothing.jsp">Women's Clothing</a></button></td>
-                <td align="center" valign="center"><img src="http://bkstr.scene7.com/is/image/Bkstr/712-10802-114510-Purple?$GMCategory$"
+                <button type="button"><a href="category.jsp?category=women">Women's Clothing</a></button></td>
+                <td align="center" valign="center"><img src="./img/baby_onesie.jpg"
                 alt="Kid Clothes" /> <br />
-                <button type="button"><a href="kidClothing.jsp">Kid's Clothing</a></button></td>
+                <button type="button"><a href="category.jsp?category=kid">Kid's Clothing</a></button></td>
             </tr>
         </table>

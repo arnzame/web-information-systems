@@ -22,10 +22,10 @@
     <body>
         <%@include file="/WEB-INF/jspf/header.jspf" %>
         <h1>Welcome back!<h1>
-        <form method="post" action="post" >
-            <p>Username: <input type="text" name="username" size="25"></p>
+        <form method="post" action="login">
+            <p>Username: <input type="text" name="userName" size="25"></p>
             <p>Password: <input type="password" name="password" size="25"></p>
-            <button type="submit"><a href="homeLogged.jsp">Login</a></button>
+            <input type="submit" value="Log In" />
             <button type="button"><a href="newAccount.jsp">Create New Account</a></button>
             <button type="button"><a href="resetPassword.jsp">Reset Password</a></button>   
         </form>

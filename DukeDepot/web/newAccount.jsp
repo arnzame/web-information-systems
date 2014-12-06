@@ -21,11 +21,11 @@
             </ul></nav>
         </header>
         <h1>Sign Up<h1>
-        <form method="post" action="post">
+        <form method="post" action="AddUser">
             <table width="100%">
                 <tr>
                     <td align="right">Username:</td>
-                    <td align="left"><input type="text" name="username" size="25" /></td>
+                    <td align="left"><input type="text" name="userName" size="25" /></td>
                 </tr>
                 <tr>
                     <td align="right">Password:</td>
@@ -39,8 +39,20 @@
                     <td align="right">Answer:</td>
                     <td align="left"><input type="text" name="answer" size="50" /></td>
                 </tr>
+                <tr>
+                    <td align="right">First name:</td>
+                    <td align="left"><input type="text" name="firstName" size="50" /></td>
+                </tr>
+                <tr>
+                    <td align="right">Last Name:</td>
+                    <td align="left"><input type="text" name="lastName" size="50" /></td>
+                </tr>
+                <tr>
+                    <td align="right">Answer:</td>
+                    <td align="left"><input type="text" name="answer" size="50" /></td>
+                </tr>
             </table>
-            <button type="submit"><a href="#">Create Account</a></button>
+            <p><input type="submit" value="register" />
         </form>
     </body>
 </html>

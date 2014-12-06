@@ -18,7 +18,6 @@
     </welcome-file-list>
     <env-entry>
         <env-entry-name>DatabasePath</env-entry-name>
-        <env-entry-description>database file path</env-entry-description>
         <env-entry-value>/home/aaron/dukeDepot.db</env-entry-value>
         <env-entry-type>java.lang.String</env-entry-type>
     </env-entry>

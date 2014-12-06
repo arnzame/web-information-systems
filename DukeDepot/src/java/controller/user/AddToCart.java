@@ -7,11 +7,19 @@ package controller.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.DBAccess;
+import model.User;
 
 /**
  *
@@ -31,18 +39,25 @@ public class AddToCart extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddToCart</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddToCart at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        if (! request.isSecure()) {
+            String secureURL = request.getRequestURL().toString().replace("http", "https");
+            secureURL = secureURL.replace("8084", "8443");
+        response.sendRedirect(secureURL);
+        }
+        DBAccess db = new DBAccess();
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("User");
+        try {
+            
+            Connection conn = db.getConnection();
+            Statement statement = conn.createStatement();
+            Boolean b = statement.execute("INSERT INTO Cart VALUES ((SELECT userID FROM Users WHERE userName = '" + u.getUserName() + "'), productID, );");
+
+        } catch (SQLException e){
+            out.print(e.getMessage());
+            e.printStackTrace();
         }
     }
 
